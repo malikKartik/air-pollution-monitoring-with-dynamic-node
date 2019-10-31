@@ -7,39 +7,36 @@
       #mapid { height: 400px; }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
   </head>
-  <body>
-    <div id="mapid"></div>
-    <script type="text/javascript">
-    var longi
-    var lati
-    var address
-    navigator.geolocation.getCurrentPosition((pos)=>{
-    	lati=pos.coords.latitude
-    	longi=pos.coords.longitude
-    	console.log(lati)
-    	console.log(longi)
-    	
-    	address = Math.floor(lati/0.0002)+"_"+Math.floor(longi/0.0002)
-    	console.log(address)
-    	var mymap = L.map('mapid').setView([lati, longi], 20);
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia2FydGlrbWFsaWsiLCJhIjoiY2sxdnNubXJrMGkwcTNibzZrNWkyMm9waiJ9.U-3RSbfauGFCAhzy415Lrg', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox.streets',
-  accessToken: 'your.mapbox.access.token'
-}).addTo(mymap);
-      var marker = L.marker([lati, longi]).addTo(mymap);
-      var circle = L.circle([lati, longi], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 3
-      }).addTo(mymap);
-    })
+<body>
+	<div id="mapid">
+		
+	</div>
+	<div id="status">
+		
+	</div>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.2.1/firebase.js"></script>
 
-      
-    </script>
-  </body>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCEdbEhjmprxMcumPtWxaHRDAsH7BPFY6Q",
+    authDomain: "safety-hazard-analysis.firebaseapp.com",
+    databaseURL: "https://safety-hazard-analysis.firebaseio.com",
+    projectId: "safety-hazard-analysis",
+    storageBucket: "safety-hazard-analysis.appspot.com",
+    messagingSenderId: "868902538649",
+    appId: "1:868902538649:web:e70db6705e6d1f456d1708"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>
